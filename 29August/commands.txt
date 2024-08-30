@@ -1,0 +1,566 @@
+Microsoft Windows [Version 10.0.22631.4037]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\asus>mongosh
+Current Mongosh Log ID: 66cee17fc89366a00a2710bb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.14
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-08-27T15:01:13.204+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> showdbs
+ReferenceError: showdbs is not defined
+test> show dbs
+admin   40.00 KiB
+config  72.00 KiB
+local   40.00 KiB
+test> use demo
+switched to db demo
+demo> showdbs
+ReferenceError: showdbs is not defined
+demo> show dbs
+admin   40.00 KiB
+config  72.00 KiB
+local   40.00 KiB
+demo> db.createCollectons("user2")
+TypeError: db.createCollectons is not a function
+demo> db.createCollecton("user2")
+TypeError: db.createCollecton is not a function
+demo> db.createCollection("user2")
+{ ok: 1 }
+demo> db.user2.insertMany([
+...     { name: "Alice", age: 25, email: "alice@example.com" },
+...     { name: "Bob", age: 30, email: "bob@example.com" },
+...     { name: "Charlie", age: 28, email: "charlie@example.com" },
+...     { name: "David", age: 35, email: "david@example.com" },
+...     { name: "Eve", age: 22, email: "eve@example.com" }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66cee65bc89366a00a2710bc'),
+    '1': ObjectId('66cee65bc89366a00a2710bd'),
+    '2': ObjectId('66cee65bc89366a00a2710be'),
+    '3': ObjectId('66cee65bc89366a00a2710bf'),
+    '4': ObjectId('66cee65bc89366a00a2710c0')
+  }
+}
+demo> db use chitkara
+Uncaught:
+SyntaxError: Missing semicolon. (1:2)
+
+> 1 | db use chitkara
+    |   ^
+  2 |
+
+demo> use chitkara
+switched to db chitkara
+chitkara> db.faculty.insertMany([
+...     { name: "Karen", age: 45, subject: "Mathematics", rating: 4.9 },
+...     { name: "Leo", age: 50, subject: "Physics", rating: 4.7 },
+...     { name: "Mona", age: 42, subject: "Chemistry", rating: 4.8 },
+...     { name: "Nina", age: 48, subject: "Biology", rating: 4.6 },
+...     { name: "Oscar", age: 55, subject: "Computer Science", rating: 4.9 }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66ceef27c89366a00a2710c1'),
+    '1': ObjectId('66ceef27c89366a00a2710c2'),
+    '2': ObjectId('66ceef27c89366a00a2710c3'),
+    '3': ObjectId('66ceef27c89366a00a2710c4'),
+    '4': ObjectId('66ceef27c89366a00a2710c5')
+  }
+}
+chitkara> db.student.insertMany([
+...     { name: "Frank", age: 21, subject: "Mathematics", marks: 90 },
+...     { name: "Grace", age: 23, subject: "Physics", marks: 89 },
+...     { name: "Hannah", age: 20, subject: "Chemistry", marks: 85 },
+...     { name: "Ivy", age: 22, subject: "Biology", marks: 91 },
+...     { name: "Jack", age: 24, subject: "Computer Science", marks: 87 }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66ceef2ac89366a00a2710c6'),
+    '1': ObjectId('66ceef2ac89366a00a2710c7'),
+    '2': ObjectId('66ceef2ac89366a00a2710c8'),
+    '3': ObjectId('66ceef2ac89366a00a2710c9'),
+    '4': ObjectId('66ceef2ac89366a00a2710ca')
+  }
+}
+chitkara> db.user.insertMany([
+...     { name: "Alice", age: 30, subject: "Mathematics", marks: 95 },
+...     { name: "Bob", age: 28, subject: "Physics", marks: 88 },
+...     { name: "Carol", age: 35, subject: "Chemistry", marks: 92 },
+...     { name: "David", age: 22, subject: "Biology", marks: 84 },
+...     { name: "Eva", age: 27, subject: "Computer Science", marks: 91 }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66ceef33c89366a00a2710cb'),
+    '1': ObjectId('66ceef33c89366a00a2710cc'),
+    '2': ObjectId('66ceef33c89366a00a2710cd'),
+    '3': ObjectId('66ceef33c89366a00a2710ce'),
+    '4': ObjectId('66ceef33c89366a00a2710cf')
+  }
+}
+chitkara> db.student.find()
+[
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c6'),
+    name: 'Frank',
+    age: 21,
+    subject: 'Mathematics',
+    marks: 90
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c7'),
+    name: 'Grace',
+    age: 23,
+    subject: 'Physics',
+    marks: 89
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c8'),
+    name: 'Hannah',
+    age: 20,
+    subject: 'Chemistry',
+    marks: 85
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c9'),
+    name: 'Ivy',
+    age: 22,
+    subject: 'Biology',
+    marks: 91
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710ca'),
+    name: 'Jack',
+    age: 24,
+    subject: 'Computer Science',
+    marks: 87
+  }
+]
+chitkara> db.student.findOne()
+{
+  _id: ObjectId('66ceef2ac89366a00a2710c6'),
+  name: 'Frank',
+  age: 21,
+  subject: 'Mathematics',
+  marks: 90
+}
+chitkara>
+
+chitkara> db.student.updateMany(
+...     {},  // Match all documents
+...     { $set: { subject: "Data Science" } }  // Set subject to "Data Science"
+... DD
+Uncaught:
+SyntaxError: Unexpected token, expected "," (4:0)
+
+  2 |     {},  // Match all documents
+  3 |     { $set: { subject: "Data Science" } }  // Set subject to "Data Science"
+> 4 | DD
+    | ^
+  5 |
+
+chitkara> db.student.updateMany(
+...     {},  // Match all documents
+...     { $set: { subject: "Data Science" } }
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+chitkara> db.student.updateMany(
+...     {},  // Match all documents
+...     { $set: { address: "Chitkara University" } }
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+chitkara> db.student.find()
+[
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c6'),
+    name: 'Frank',
+    age: 21,
+    subject: 'Data Science',
+    marks: 90,
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c7'),
+    name: 'Grace',
+    age: 23,
+    subject: 'Data Science',
+    marks: 89,
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c8'),
+    name: 'Hannah',
+    age: 20,
+    subject: 'Data Science',
+    marks: 85,
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c9'),
+    name: 'Ivy',
+    age: 22,
+    subject: 'Data Science',
+    marks: 91,
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710ca'),
+    name: 'Jack',
+    age: 24,
+    subject: 'Data Science',
+    marks: 87,
+    address: 'Chitkara University'
+  }
+]
+chitkara> db.student.updateMany(
+...     { marks: { $gte: 91 } },
+...     { $set: { grade: "A++" } }
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+chitkara> db.student.find()
+[
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c6'),
+    name: 'Frank',
+    age: 21,
+    subject: 'Data Science',
+    marks: 90,
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c7'),
+    name: 'Grace',
+    age: 23,
+    subject: 'Data Science',
+    marks: 89,
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c8'),
+    name: 'Hannah',
+    age: 20,
+    subject: 'Data Science',
+    marks: 85,
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c9'),
+    name: 'Ivy',
+    age: 22,
+    subject: 'Data Science',
+    marks: 91,
+    address: 'Chitkara University',
+    grade: 'A++'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710ca'),
+    name: 'Jack',
+    age: 24,
+    subject: 'Data Science',
+    marks: 87,
+    address: 'Chitkara University'
+  }
+]
+chitkara>
+
+chitkara> db.student.updateMany(
+...     {},  // Match all documents
+...     { $set: { subject: "Data Science" } }  // Set subject to "Data Science"
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+chitkara>
+
+chitkara> db.student.updateMany(
+...     {},  // Match all documents
+...     { $set: { address: "Chitkara University" } }  // Add address field
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+chitkara> db.student.updateMany(
+...     { marks: { $gte: 91 } },
+...     { $set: { grade: "A++" } }
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+chitkara> db.student.updateMany(
+...     { marks: { $gte: 86, $lte: 90 } },
+...     { $set: { grade: "A+" } }
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+chitkara> db.student.findOne()
+{
+  _id: ObjectId('66ceef2ac89366a00a2710c6'),
+  name: 'Frank',
+  age: 21,
+  subject: 'Data Science',
+  marks: 90,
+  address: 'Chitkara University',
+  grade: 'A+'
+}
+chitkara> db.student.find()
+[
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c6'),
+    name: 'Frank',
+    age: 21,
+    subject: 'Data Science',
+    marks: 90,
+    address: 'Chitkara University',
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c7'),
+    name: 'Grace',
+    age: 23,
+    subject: 'Data Science',
+    marks: 89,
+    address: 'Chitkara University',
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c8'),
+    name: 'Hannah',
+    age: 20,
+    subject: 'Data Science',
+    marks: 85,
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c9'),
+    name: 'Ivy',
+    age: 22,
+    subject: 'Data Science',
+    marks: 91,
+    address: 'Chitkara University',
+    grade: 'A++'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710ca'),
+    name: 'Jack',
+    age: 24,
+    subject: 'Data Science',
+    marks: 87,
+    address: 'Chitkara University',
+    grade: 'A+'
+  }
+]
+chitkara> db.student.updateMany( { marks: { $lte: 85 } }, { $set: { grade: "A" } } )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+chitkara> db.student.find()
+[
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c6'),
+    name: 'Frank',
+    age: 21,
+    subject: 'Data Science',
+    marks: 90,
+    address: 'Chitkara University',
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c7'),
+    name: 'Grace',
+    age: 23,
+    subject: 'Data Science',
+    marks: 89,
+    address: 'Chitkara University',
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c8'),
+    name: 'Hannah',
+    age: 20,
+    subject: 'Data Science',
+    marks: 85,
+    address: 'Chitkara University',
+    grade: 'A'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c9'),
+    name: 'Ivy',
+    age: 22,
+    subject: 'Data Science',
+    marks: 91,
+    address: 'Chitkara University',
+    grade: 'A++'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710ca'),
+    name: 'Jack',
+    age: 24,
+    subject: 'Data Science',
+    marks: 87,
+    address: 'Chitkara University',
+    grade: 'A+'
+  }
+]
+chitkara>
+
+chitkara> db.student.find(
+...     { age: { $gt: 20 }, marks: { $gt: 85 } }
+... )
+[
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c6'),
+    name: 'Frank',
+    age: 21,
+    subject: 'Data Science',
+    marks: 90,
+    address: 'Chitkara University',
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c7'),
+    name: 'Grace',
+    age: 23,
+    subject: 'Data Science',
+    marks: 89,
+    address: 'Chitkara University',
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c9'),
+    name: 'Ivy',
+    age: 22,
+    subject: 'Data Science',
+    marks: 91,
+    address: 'Chitkara University',
+    grade: 'A++'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710ca'),
+    name: 'Jack',
+    age: 24,
+    subject: 'Data Science',
+    marks: 87,
+    address: 'Chitkara University',
+    grade: 'A+'
+  }
+]
+chitkara> db.student.find(
+...     { marks: { $gte: 90 }, age: { $gte: 20 } }
+... )
+[
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c6'),
+    name: 'Frank',
+    age: 21,
+    subject: 'Data Science',
+    marks: 90,
+    address: 'Chitkara University',
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c9'),
+    name: 'Ivy',
+    age: 22,
+    subject: 'Data Science',
+    marks: 91,
+    address: 'Chitkara University',
+    grade: 'A++'
+  }
+]
+chitkara> db.student.find(
+...     { grade: "A++" }
+... )
+[
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c9'),
+    name: 'Ivy',
+    age: 22,
+    subject: 'Data Science',
+    marks: 91,
+    address: 'Chitkara University',
+    grade: 'A++'
+  }
+]
+chitkara>
+
+chitkara> db.student.find({$and:[ {age:{$gt:22}}, {marks:{$gte:85}}]})
+[
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710c7'),
+    name: 'Grace',
+    age: 23,
+    subject: 'Data Science',
+    marks: 89,
+    address: 'Chitkara University',
+    grade: 'A+'
+  },
+  {
+    _id: ObjectId('66ceef2ac89366a00a2710ca'),
+    name: 'Jack',
+    age: 24,
+    subject: 'Data Science',
+    marks: 87,
+    address: 'Chitkara University',
+    grade: 'A+'
+  }
+]
+chitkara>
+
+chitkara> db.student.countDocuments()
+5
+chitkara>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+chitkara>
